@@ -47,7 +47,9 @@ kick_bytes = kick_video.read()
 
 # load the model
 model_path = Path(__file__).parent / 'models/rgf_muaythai.pkl'
-model = pickle.load(open(model_path, 'rb'))
+
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
 
 # load the MoveNet model
 interpreter = tf.lite.Interpreter(model_path = 'models/lite-model_movenet_singlepose_thunder_3.tflite')
@@ -952,6 +954,10 @@ if selected == 'Live Muay Th.AI':
     st.header('Final Counts:')
     st.subheader(f"Jabs : {jab_counter}")
     st.subheader(f"Kicks : {kick_counter}")
+    
+
+    
+    
 
 
 
