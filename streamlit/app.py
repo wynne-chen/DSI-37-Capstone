@@ -6,7 +6,7 @@ from pathlib import Path
 import os
 import tempfile
 
-import pickle
+import joblib
 import pandas as pd
 import numpy as np
 
@@ -49,7 +49,7 @@ kick_bytes = kick_video.read()
 model_path = Path(__file__).parent / 'models/rgf_muaythai.pkl'
 
 with open(model_path, 'rb') as f:
-    model = pickle.load(f)
+    model = joblib.load(f)
 
 # load the MoveNet model
 interpreter = tf.lite.Interpreter(model_path = 'models/lite-model_movenet_singlepose_thunder_3.tflite')
